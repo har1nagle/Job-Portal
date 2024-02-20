@@ -34,8 +34,11 @@ const App = () => {
     };
 
     fetchUser();
+  }, [isAuthorized]);
 
-  }, [isAuthorized])
+  if (isAuthorized) {
+    return <Navigate to={"/"} />;
+  }
 
 
   return (
