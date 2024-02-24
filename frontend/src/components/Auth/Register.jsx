@@ -20,16 +20,21 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:4000/api/v1/user/register",
+      const { data } = await axios.post(
+        "http://localhost:4000/api/v1/user/register",
         {
-          name, email, password, phone, role
+          name,
+          email,
+          password,
+          phone,
+          role,
         },
-      
+
         {
-          withCredentials: true,
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
+          withCredentials: true,
         }
       );
       toast.success(data.message);
@@ -50,7 +55,7 @@ const Register = () => {
   }
   return (
     <>
-      <div className="authPage">
+      <section className="authPage">
         <div className="container">
           <div className="header">
             <img src="/JobZeelogo.png" alt="logo" />
@@ -122,15 +127,17 @@ const Register = () => {
               </div>
             </div>
 
-            <button onClick={handleRegister} type='submit'>Register</button>
-            <Link to={'/login'}>Login Now</Link>
+            <button type="submit" onClick={handleRegister}>
+              Register
+            </button>
+            <Link to={"/login"}>Login Now</Link>
           </form>
         </div>
 
         <div className="banner">
           <img src="./register.png" alt="register" />
         </div>
-      </div>
+      </section>
     </>
   );
 }

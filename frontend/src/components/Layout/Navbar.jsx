@@ -15,7 +15,10 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/v1/user/logout", { withCredentials: true });
+      const response = await axios.get(
+        "http://localhost:4000/api/v1/user/logout",
+        { withCredentials: true }
+      );
       toast.success(response.data.message);
       seIsAuthorized(false);
       navigateTo("/login");
@@ -47,7 +50,7 @@ const Navbar = () => {
               <Link to={"/application/me"} onClick={() => setShow(false)}>
                 {user && user.role === "Employer"
                   ? "APPLICANT'S APPLICATION"
-                  : "MY APPLICATION"}
+                  : "MY APPLICATIONS"}
               </Link>
             </li>
             {user && user.role === "Employer" ? (
@@ -56,7 +59,7 @@ const Navbar = () => {
                   <Link to={"/job/post"} onClick={() => setShow(false)}>Post New Jobs</Link>
                 </li>
                 <li>
-                  <Link to={"/job/post"} onClick={() => setShow(false)}>View Your Jobs</Link>
+                  <Link to={"/job/me"} onClick={() => setShow(false)}>View Your Jobs</Link>
                 </li>
               </>
             ) : (
